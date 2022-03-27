@@ -25,7 +25,15 @@ Please let me know if you find more.
 I think it would be good to have a collection of keyboard geometry configuration files.
 
 
-# Sources:
+# Useful resources
+
+- https://www.x.org/releases/X11R7.7/doc/kbproto/xkbproto.html#Keyboard_Geometry Great description of xkb geometry, but doesn't translate it into configuration files.
+
+- https://web.archive.org/web/20190205191552/http://pascal.tsu.ru/en/xkb/ Best documentation on xkb configuration I've found. It also happens to be an archived english translation of documentation hosted on a Russian university(?)'s website. I hope that illustrates the state of xkb configuration documentation. Nothing on geometry.
+
+- https://wiki.archlinux.org/title/X_keyboard_extension Good documentation on normal keyboard configuration. Nothing on geometry.
+
+Other sources:
 
 - Random places and testing
 
@@ -33,10 +41,4 @@ I think it would be good to have a collection of keyboard geometry configuration
 
 - https://gitlab.freedesktop.org/xorg/app/xkbprint
 
-- Creating https://github.com/Albert-S-Briscoe/xkbprint-kle
-
-- The Xorg protocol documentation
-
-- https://wiki.archlinux.org/title/X_keyboard_extension
-
-- https://web.archive.org/web/20190205191552/http://pascal.tsu.ru/en/xkb/ Best documentation on xkb configuration I've found. It also happens to be an archived english translation of documentation hosted on a Russian university(?)'s website. I hope that illustrates the state of xkb configuration documentation.
+- Experience from creating https://github.com/Albert-S-Briscoe/xkbprint-kle
