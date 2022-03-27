@@ -74,6 +74,10 @@ I think they need to be correct, but I haven't checked.
 
 The `description` property is used as the name of the keyboard.
 
+`base_color`
+`label_color`
+`label_font`
+
 ### Keywords
 #### General ([more info here](keys.md)):
 `shape` and `section`.
