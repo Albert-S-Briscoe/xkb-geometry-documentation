@@ -35,3 +35,7 @@ I think it would be good to have a collection of keyboard geometry configuration
 - Creating https://github.com/Albert-S-Briscoe/xkbprint-kle
 
 - The Xorg protocol documentation
+
+- https://wiki.archlinux.org/title/X_keyboard_extension
+
+- https://web.archive.org/web/20190205191552/http://pascal.tsu.ru/en/xkb/ Best documentation on xkb configuration I've found. It also happens to be an archived english translation of documentation hosted on a Russian university(?)'s website. I hope that illustrates the state of xkb configuration documentation.
