@@ -75,7 +75,7 @@ I think they need to be correct, but I haven't checked.
 The `description` property is used as the name of the keyboard.
 
 ### Keywords
-#### General (more info in keys.md):
+#### General ([more info here](keys.md)):
 `shape` and `section`.
 
 Shapes are important to both doodads and keys, and there is no default.
@@ -83,11 +83,11 @@ Make sure you have the shapes you want.
 
 Actual keyboard keys are stored in `section`s.
 
-#### Doodads (doodads.md):
+#### [Doodads](doodads.md):
 `outline`, `solid`, `text`, `indicator`, and `logo`.
 
 Doodads (official name in the xorg protocol), are where the keyboard really gets interesting.
 If your keyboard has any leds, text, case, dark space below the keys, pointing device, card reader, built in calculator, laptop attached to it, etc. (anything that isn't a key), use doodads.
 
 # Example using all valid keywords with each keyword's properties used at least once
-example.xkb
+[Check here](examples/example.xkb)
