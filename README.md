@@ -27,13 +27,13 @@ I think it would be good to have a collection of keyboard geometry configuration
 
 # Useful resources
 
+- https://www.x.org/releases/X11R7.7/doc/libX11/XKB/xkblib.html#Keyboard_Geometry Internals of XKB. Fantastic explination of XKB geometry, but it's documentation for programming using libX11, not creating configuration files.
+
 - https://www.x.org/releases/X11R7.7/doc/kbproto/xkbproto.html#Keyboard_Geometry Great description of xkb geometry, but doesn't mention configuration files.
 
 - https://web.archive.org/web/20190205191552/http://pascal.tsu.ru/en/xkb/ Best documentation on xkb configuration I've found. It also happens to be an archived english translation of documentation hosted on a Russian university(?)'s website. I hope that illustrates the state of xkb configuration documentation. Nothing on geometry.
 
 - https://wiki.archlinux.org/title/X_keyboard_extension Good documentation on normal keyboard configuration. Nothing on geometry.
-
-- https://www.x.org/releases/X11R7.7/doc/libX11/XKB/xkblib.html Internals of XKB
 
 Other sources:
 
