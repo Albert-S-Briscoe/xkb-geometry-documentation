@@ -1,6 +1,7 @@
 # What is this?
 
-This is a collection of reasonably well thought out notes on xkb geometry (in no particular format) that I'm calling documentation, because it's probably the best there is on the topic.
+This is a collection of reasonably well thought out notes on xkb geometry (in no particular format).
+I'm calling it documentation because it's probably the best there is on the topic.
 
 Xkb geometry is very powerful, but I haven't found any good documentation anywhere (I've searched hard, but please let me know if I didn't search hard enough).
 I want to change that.
