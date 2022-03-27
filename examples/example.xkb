@@ -1,0 +1,73 @@
+// rough template at the moment, but it has almost everything
+
+xkb_geometry "example" {
+	description=""
+	width
+	height
+	base_color=""
+	label_color=""
+	//label_font?
+	
+	properties?
+	colors?
+	
+	shape "" {
+		//...
+	};
+
+	section "" {
+		top
+		left
+		
+		row {
+			//...
+		};
+		//doodads
+		//overlays
+	};
+	
+	solid "" {
+		priority?
+		top
+		left
+		angle?
+		color=""
+		shape=""
+	};
+
+	outline "" {
+		// same as solid
+	};
+
+	text "" {
+		priority?
+		top
+		left
+		angle?
+		width
+		height
+		color=""
+		text = ""
+		//font related stuff
+	};
+
+	indicator "" {
+		priority?
+		top
+		left
+		angle?
+		shape=""
+		on_color=""
+		off_color=""
+	};
+
+	logo "" {
+		priority?
+		top
+		left
+		angle?
+		color=""
+		shape=""
+		//`logo_name`
+	};
+};
