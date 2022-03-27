@@ -1,0 +1,224 @@
+xkb_geometry "dellLatitudeE6420" {
+
+	description = "Latitude E6420";
+	width = 295;
+	height = 132;
+	baseColor = "grey20";
+	labelColor = "white";
+	
+	shape "BACKGROUND"  {
+		cornerRadius = 3,
+		{ [ 295,   132   ] }
+	};
+	shape "BACKGROUND1" {
+		cornerRadius = 3,
+		{
+			[   1,     1   ],
+			[ 294,   131   ]
+		}
+	};
+	shape "BACKGROUND2" {
+		cornerRadius = 1.5,
+		{
+			[   4.5,   4.5 ],
+			[ 290.5,   4.5 ],
+			[ 290.5, 126   ],
+			[ 232.5, 126   ],
+			[ 232.5, 113   ],
+			[ 172.5, 113   ],
+			[ 172.5, 127.5 ],
+			[  93.5, 127.5 ],
+			[  93.5, 113   ],
+			[   4.5, 113   ]
+		}
+	};
+	solid "edges" { // needs to be named edges to disable background
+		shape = "BACKGROUND";
+		top = 0;
+		left = 0;
+		color = "red";
+	};
+	solid "Background1" {
+		shape = "BACKGROUND1";
+		top = 0;
+		left = 0;
+		color = "grey20";
+	};
+		solid "Background2" {
+		shape = "BACKGROUND2";
+		top = 0;
+		left = 0;
+		color = "black";
+	};
+	
+	shape "FKEY" { cornerRadius = 1, { [ 16.5, 12 ] }, { [ 1, 1 ], [ 15.5, 11 ] } };
+	shape "ESC"  { cornerRadius = 1, { [   19, 12 ] }, { [ 1, 1 ], [   18, 11 ] } };
+	shape "DEL"  { cornerRadius = 1, { [ 18.5, 12 ] }, { [ 1, 1 ], [ 17.5, 11 ] } };
+	
+	section "Function" {
+		top = 5;
+		left = 5;
+		width = 290;
+		height = 12;
+		key.color = "grey80";
+		key.shape = "FKEY";
+		key.gap = 0;
+//		row {
+//			top = 0;
+//			keys {
+//				{ <MENU>, 165 }, <PRSC>, <NMLK>, <PAUS>,
+//				{ <INS>, 1 },  <HOME>, <PGUP>
+//			};
+//		};
+		row {
+			top = 0;
+			keys {
+				{ <ESC>, shape = "ESC" }, <FK01>,
+				<FK02>, <FK03>, <FK04>, <FK05>,
+				<FK06>, <FK07>, <FK08>, <FK09>,
+				<FK10>, <FK11>, <FK12>, <HOME>,
+				<END>, <INS>, { <DELE>, shape = "DEL" }
+			};
+		};
+	};
+	
+	shape "AKEY" { cornerRadius = 1, { [ 19,   19 ] }, { [ 2, 1 ], [ 17,   15 ] } };
+	shape "BKSP" { cornerRadius = 1, { [ 38,   19 ] }, { [ 2, 1 ], [ 36,   15 ] } };
+	shape "TABK" { cornerRadius = 1, { [ 28.5, 19 ] }, { [ 2, 1 ], [ 26.5, 15 ] } };
+	shape "BKSL" { cornerRadius = 1, { [ 28.5, 19 ] }, { [ 2, 1 ], [ 26.5, 15 ] } };
+	shape "CAPS" { cornerRadius = 1, { [ 33,   19 ] }, { [ 2, 1 ], [ 26.5, 15 ] } };
+	shape "RTRN" { cornerRadius = 1, { [ 43,   19 ] }, { [ 2, 1 ], [ 41,   15 ] } };
+	shape "LFSH" { cornerRadius = 1, { [ 42.5, 19 ] }, { [ 2, 1 ], [ 40.5, 15 ] } };
+	shape "RTSH" { cornerRadius = 1, { [ 52.5, 19 ] }, { [ 2, 1 ], [ 50.5, 15 ] } };
+	shape "LCTL" { cornerRadius = 1, { [ 28.5, 19 ] }, { [ 2, 1 ], [ 26.5, 15 ] } };
+	shape "LALT" { cornerRadius = 1, { [ 24,   19 ] }, { [ 2, 1 ], [ 22,   15 ] } };
+	shape "RCTL" { cornerRadius = 1, { [ 23.5, 19 ] }, { [ 2, 1 ], [ 21.5, 15 ] } };
+	shape "SPCE" { cornerRadius = 1, { [ 95,   19 ] }, { [ 2, 1 ], [ 93,   15 ] } };
+	
+	
+	section "Alpha" {
+		top = 17.5;
+		left = 5;
+		width = 290; // probably incorrect
+		height = 21; // incorrect
+		key.color = "grey80";
+		key.shape = "AKEY";
+		key.gap = 0;
+		row {
+			top = 0;
+			keys {
+				<TLDE>, <AE01>, <AE02>, <AE03>, <AE04>,
+				<AE05>, <AE06>, <AE07>, <AE08>, <AE09>,
+				<AE10>, <AE11>, <AE12>, { <BKSP>, "BKSP" }
+			};
+		};
+		row {
+			top = 19;
+				keys {
+				{ <TAB>, "TABK" },
+				<AD01>, <AD02>, <AD03>, <AD04>, <AD05>,
+				<AD06>, <AD07>, <AD08>, <AD09>, <AD10>,
+				<AD11>, <AD12>, { <BKSL>, "BKSL" }
+			};
+		};
+		row {
+			top = 38;
+			keys {
+				{ <CAPS>, "CAPS" }, // caps lock has a light, but whatever.
+				<AC01>, <AC02>, <AC03>, <AC04>, <AC05>,
+				<AC06>, <AC07>, <AC08>, <AC09>, <AC10>,
+				<AC11>, { <RTRN>, "RTRN" }
+			};
+		};
+		row {
+			top = 57;
+				keys { { <LFSH>, "LFSH" },
+				<AB01>, <AB02>, <AB03>, <AB04>, <AB05>,
+				<AB06>, <AB07>, <AB08>, <AB09>, <AB10>,
+				{ <RTSH>, "RTSH" }
+			};
+		};
+		row {
+			top = 76;
+			keys {
+				{ <LCTL>, "LCTL" }, { <LWIN>, 19 }, { <LALT>, "LALT" },
+				{ <SPCE>, "SPCE" }, <RALT>, { <RCTL>, "RCTL" }
+			};
+		};
+	};
+	
+	solid "FN" { // placeholder Fn key, it doesn't directly do anything in the OS, but it's a key.
+		top = 93.5;
+		left = 33.5;
+		shape = "AKEY";
+		color = "grey80";
+	};
+	
+	// there are actually 3 different shapes here (pgup+pgdn, up, left+down+right), but whatever.
+	shape "SKEY" { cornerRadius = 1, { [ 19, 16 ] }, { [ 2, 1 ], [ 16, 13 ] } };
+	section "Arrows" {
+		top = 93.5;
+		left = 233;
+		width = 57;
+		height = 36;
+		
+		key.color = "grey80";
+		key.shape = "SKEY";
+		row {
+			top = 0;
+			left = 0;
+			keys { <PGUP>, <UP>, <PGDN> };
+		};
+		
+		row {
+			top = 16;
+			left = 0;
+			keys { <LEFT>, <DOWN>, <RGHT> };
+		};
+	};
+	
+	shape "STIK" { cornerRadius = 4, { [ 7, 7 ] } };
+	
+	solid "STIK" {
+		priority = 255;
+		color = "red";
+		shape = "STIK";
+		top = 71;
+		left = 129.5;
+	};
+	
+	shape "TPBTN" { cornerRadius = 1, { [ 28, 14 ] } };
+	shape "TP3"   { cornerRadius = 1, { [ 22, 14 ] } };
+	
+	solid "TP1" {
+		top = 113;
+		left = 94; // ends at 122
+		shape = "TPBTN";
+		color = "grey20";
+	};
+	
+	solid "TP3" {
+		top = 113;
+		left = 122; // ends at 144
+		shape = "TP3";
+		color = "grey20";
+	};
+	
+	solid "TP2" {
+		top = 113;
+		left = 144; // ends at 172
+		shape = "TPBTN";
+		color = "grey20";
+	};
+	
+	text "LATITUDE" {
+		left = 9;
+		top = 122;
+		text = "L A T  I  T U D E";
+		
+		// pleases the compiler:
+		color = "black";
+		font = "helvetica";
+		height = 5;
+	};
+};
