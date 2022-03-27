@@ -12,7 +12,7 @@ This is for anyone else who has decided to ignore [this](https://wiki.archlinux.
 - https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config (look in the geometry folder). Probably already in /usr/share/X11/xkb/ on your computer.
 The default is the 105 key version in geometry/pc, but the other files have more complicated layouts.
 
-- My Dell Latitude E6420 layout in the examples folder.
+- [My Dell Latitude E6420 layout](examples/geometry.xkb)
 
 Random repos I found after a bit of searching:
 
@@ -21,7 +21,7 @@ Random repos I found after a bit of searching:
 - https://github.com/ZeptByteS/xkb_geometry_microsoft_4000
 
 Please let me know if you find more.
-I think it would be nice to have a good collection of keyboard geometry configuration files.
+I think it would be good to have a collection of keyboard geometry configuration files.
 
 
 # Sources:
@@ -32,6 +32,6 @@ I think it would be nice to have a good collection of keyboard geometry configur
 
 - https://gitlab.freedesktop.org/xorg/app/xkbprint
 
-- Working on my XKB geometry to keyboard-layout-editor.com converter
+- Creating https://github.com/Albert-S-Briscoe/xkbprint-kle
 
 - The Xorg protocol documentation
