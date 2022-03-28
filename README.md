@@ -1,12 +1,16 @@
 # What is this?
 
-This is a collection of reasonably well thought out notes on xkb geometry (in no particular format).
+This is a collection of reasonably well thought out notes on xkb geometry and a template with similar notes.
 I'm calling it documentation because it's probably the best there is on the topic.
 
 Xkb geometry is very powerful, but I haven't found any good documentation anywhere (I've searched hard, but please let me know if I didn't search hard enough).
 I want to change that.
 
 This is for anyone else who has decided to ignore [this](https://wiki.archlinux.org/title/X_keyboard_extension#xkb_geometry), but has otherwise followed that page or something similar.
+
+# Where do I start?
+
+The .md files aren't finished yet, but [the template file](examples/example.xkb) is almost done.
 
 # List of geometry files, to use as templates/examples
 
@@ -37,7 +41,7 @@ I think it would be good to have a collection of keyboard geometry configuration
 
 Other sources:
 
-- Random places and testing
+- Testing and other random places
 
 - https://gitlab.freedesktop.org/xorg/app/xkbcomp
 
