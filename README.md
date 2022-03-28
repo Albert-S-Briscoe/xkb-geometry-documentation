@@ -13,7 +13,7 @@ This is for anyone else who has decided to ignore [this](https://wiki.archlinux.
 - https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config (look in the geometry folder). Probably already in /usr/share/X11/xkb/ on your computer.
 The default is the 105 key version in geometry/pc, but the other files have more complicated layouts.
 
-- [My Dell Latitude E6420 layout](examples/geometry.xkb)
+- [My Dell Latitude E6420 layout](examples/Dell_E6420.xkb)
 
 Random repos I found after a bit of searching:
 
