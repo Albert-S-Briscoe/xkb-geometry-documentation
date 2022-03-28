@@ -1,31 +1,173 @@
 // rough template at the moment, but it has almost everything
+// numbers are not the defaults at the moment
+
+// I'm using backticks to quote code in comments.
+
+
+// Comments are c style single line comments. C multi line comments (/* comment */) will not work.
+// Measurements are in mm, with an accuracy of 0.1mm.
+// All variable names are case insensitive. `SeCtIoN "name" {};` is the same as `section "name" {};`.
 
 xkb_geometry "example" {
-	description=""
-	width
-	height
-	base_color=""
-	label_color=""
-	//label_font?
-	
-	properties?
-	colors?
-	
-	shape "" {
-		//...
+	// include statements `HandleIncludeGeometry`
+	// key aliases? `HandleAliasDef`
+
+
+	// I get zero results searching the xkbcomp code for this. It's the name of the keyboard, but I have no idea how it gets to xkbprint.
+	description="";
+
+	// Required if using xkbprint. Recommended (possibly not required?) to be correct.
+	width=123; //widthmm=123;
+	height=123; //heightmm=123;
+
+	// Font (optional):
+	font="";
+	fontslant=""; //slant="";
+	fontweight=""; //weight="";
+	fontwidth=""; //setwidth="";
+	fontencoding=""; //encoding="";
+	xfont=""; //xfontname="";
+	fontsize=12; // Can be 4-255
+
+	// Colors (optional):
+	basecolor=""; //color="";
+	labelcolor="";
+
+
+	// These variables change default values for later (optional):
+	shape.corner=0; //shape.radius=2; //shape.cornerRadius=2;
+
+	key.gap=0;
+	key.shape="Basic Shape";
+	key.color=""; //key.keycolor="";
+	key.name=<KEY>; //key.keyname=<KEY>;
+
+	row.top=123;
+	row.left=123;
+	row.vertical=False;
+
+	section.priority=123; // Rendering order, range is 0 to `XkbGeomMaxPriority`
+	section.top=123;
+	section.left=123;
+	section.width=123;
+	section.height=123;
+	section.angle=123;
+
+	//`property`?
+
+
+	shape "Basic Shape" {
+		// Uses commas instead of semicolons. This is technically an array.
+
+		// Usually set by shape.corner above.
+		// Sets the raidius of the round corners. 0 disables rounded corners. Can be defined more than once per shape.
+		// Note/Warning: Nothing will complain if you set this to a negative value. Do with that what you will.
+		corner=0, //radius=2; //cornerRadius=2;
+
+		// list of "outlines". Each outline has a list of points used to create a polygon, connecting lines from one point to the next (and the first to last point) in order.
+		// special cases:
+		// Outlines with 1 point: Creates a rectangle with the dimentions of the point's coordinates (look at the ascii art below and imagine point 1 is fixed at [0,0]).
+		// Outlines with 2 points: Creates a rectangle where the two points are any two opposing corners:
+		//  Point 1 -> X-----------+
+		//             |           |
+		//             +-----------X <- Point 2
+
+		// outlines:
+		{
+			[19, 19]
+		},
+		{ [2, 1], [17, 15] }
+
+		// There are two additional "variables", which are actually outlines. They aren't normally rendered as outlines. If one isn't defined, the first outline in the element is used instead.
+		//approx={ [19, 19] } // Required for non-rectangular keys. Must be a rectangular (1 or 2 points) approximation of the key for applications that don't support non-rectangular keys.
+		//primary={ [19, 19] } // The outline to use if an application can only display one outline per shape.
 	};
 
-	section "" {
-		top
-		left
-		
-		row {
-			//...
-		};
-		//doodads
-		//overlays
+	shape "Much more complicated shape" {
+		// you probably shouldn't use this in a layout, but it does use all the features of shapes other than `approx` and `primary` (and negative radii)
+
+		cornerRadius = 1,
+		{ [19, 19] }, // Actual key size. It's also a correct approximate and primary outline.
+
+		cornerRadius = 0,
+		// Grid
+		{ [2, 2], [17, 17] }, // Outer edge of grid
+		{ [2, 7], [17, 12] },
+		{ [7, 2], [12, 17] },
+
+		// Vector shading (for some reason I did this by hand)
+		{ [7,  2],  [8,  2],  [7,  3],  [7,  4],  [9,  2],  [10, 2],  [7,  5],  [7,  6],  [11, 2],  [12, 2],  [7,  7],  [8,  7],  [12, 3],  [12, 4],  [9,  7],  [10, 7],  [12, 5],  [12, 6],  [11, 7],  [7,  7]  },
+		{ [12, 7],  [13, 7],  [12, 8],  [12, 9],  [14, 7],  [15, 7],  [12, 10], [12, 11], [16, 7],  [17, 7],  [12, 12], [13, 12], [17, 8],  [17, 9],  [14, 12], [15, 12], [17, 10], [17, 11], [16, 12], [12, 12] },
+		{ [2,  12], [3,  12], [2,  13], [2,  14], [4,  12], [5,  12], [2,  15], [2,  16], [6,  12], [7,  12], [2,  17], [3,  17], [7,  13], [7,  14], [4,  17], [5,  17], [7,  15], [7,  16], [6,  17], [2,  17] },
+		{ [7,  12], [8,  12], [7,  13], [7,  14], [9,  12], [10, 12], [7,  15], [7,  16], [11, 12], [12, 12], [7,  17], [8,  17], [12, 13], [12, 14], [9,  17], [10, 17], [12, 15], [12, 16], [11, 17], [7,  17] },
+		{ [12, 12], [13, 12], [12, 13], [12, 14], [14, 12], [15, 12], [12, 15], [12, 16], [16, 12], [17, 12], [12, 17], [13, 17], [17, 13], [17, 14], [14, 17], [15, 17], [17, 15], [17, 16], [16, 17], [12, 17] }
 	};
-	
+
+	// Physically and functionally grouped together set of keys. (not a requirement, but a good recommendation)
+	// XKB's documentation uses splitting a 104 key keyboard into 4 parts as an exapmle; Alphanumeric (for the 60% area of a keyboard), Function (for Esc-F12), Editing (for the nav cluster), and Keypad for the numpad.
+	section "" {
+		priority=0; //section.priority=0; // Rendering order, range is 0 to `XkbGeomMaxPriority`
+		top=0; //section.top=0;
+		left=0; //section.left=0;
+		width=0; //section.width=0;
+		height=0; //section.height=0;
+		angle=0; //section.angle=0;
+
+		row.top=123;
+		row.left=123;
+		row.vertical=False;
+
+		key.gap=0;
+		key.shape="Basic Shape";
+		key.color=""; //key.keycolor="";
+		key.name=<KEY>; //key.keyname=<KEY>;
+
+
+		// row doesn't have a name string.
+		row {
+			top=123; //row.top=123;
+			left=123; //row.left=123;
+			vertical=False; //row.vertical=False;
+
+			key.gap=0;
+			key.shape="Basic Shape";
+			key.color=""; //key.keycolor="";
+			key.name=<KEY>; //key.keyname=<KEY>;
+
+			keys {
+				<KEY>,
+				<KEY>,
+
+				// Complex key:
+				{
+					// This part is a bit different. You don't need to include the variable name for the `name`, `shape`, or `gap`.
+					// Any key name values will be assigned to `name`, any integers are assigned to gap, and any strings are assigned to shape.
+					// You only need to include the variable name for `color`.
+
+					<KEY>, //name=<KEY>, //key.name=<KEY>, //key.keyname=<KEY>,
+
+					// Optional:
+					gap=12, //12, //key.gap=12,
+					shape="Basic Shape", //"", //key.shape="",
+					color="" //key.color="" //key.keycolor=""
+				},
+
+				{ <KEY>, 12, "Basic Shape", color="" }, // most compact version
+				{ key.keyname=<KEY>, key.gap=12, key.shape="Basic Shape", key.keycolor="" }, // Expanded variable names work too
+
+				<KEY>//, ...
+			};
+		};
+
+		row { keys { <KEY>, <KEY>, { <KEY>, 12 }, <KEY> } }; // more compact compact version of the row above.
+// Progress so far
+		//doodads `StmtDoodadDef` or `StmtIndicatorMapDef`: `HandleDoodadDef`
+		//overlays `StmtOverlayDef`: `HandleOverlayDef`
+
+	}; // end of section
+
+
+
 	solid "" {
 		priority?
 		top
