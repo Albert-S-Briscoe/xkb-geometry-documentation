@@ -3,7 +3,7 @@
 
 // You can use C formatting for xkb files.
 // Comments are C style single line comments. C multi line comments (/* comment */) will not work.
-// Measurements are in mm, with an accuracy of 0.1mm.
+// All measurements are in mm, with an accuracy of 0.1mm.
 // Everything is case insensitive unless noted otherwise. Even strings, to some extent.
 
 xkb_geometry "example" {
@@ -30,9 +30,9 @@ xkb_geometry "example" {
 
 	// Colors can be anything, but xkbprint accepts these constants:
 	// "white", "black", "red", "green", or "blue"
-	// or, (case sensitive and replacing "%d" with an integer from 0 to 100 ("red80" for example)):
+	// It also supports these (case sensitive and replacing "%d" with an integer from 0 to 100 ("red80" for example)):
 	// "grey%d", "gray%d", "Grey%d", "Gray%d", "red%d", "green%d", or "blue%d"
-	// xkbprint defaults to grey90, which is close to white.
+	// xkbprint defaults to "grey90". "grey0" is the same as white, and "grey100" is the same as black.
 
 	// Colors (optional):
 	basecolor=""; //color="";
@@ -184,7 +184,7 @@ xkb_geometry "example" {
 		text "text" {
 			top=0;
 			left=0;
-			text="text";
+			text="Text to display";
 		};
 		indicator "indicator" {
 			top=0;
@@ -201,8 +201,6 @@ xkb_geometry "example" {
 		//overlays. Not documented yet. `StmtOverlayDef`: `HandleOverlayDef`
 
 	}; // end of section
-
-
 
 
 	// Doodads:
