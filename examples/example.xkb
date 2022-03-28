@@ -1,8 +1,8 @@
 // rough template at the moment, but it has almost everything
 // numbers are either defaults (0 if there isn't a default) or an example value (123 or 12).
 
-
-// Comments are c style single line comments. C multi line comments (/* comment */) will not work.
+// You can use C formatting for xkb files.
+// Comments are C style single line comments. C multi line comments (/* comment */) will not work.
 // Measurements are in mm, with an accuracy of 0.1mm.
 // Everything is case insensitive unless noted otherwise. Even strings, to some extent.
 
@@ -168,8 +168,7 @@ xkb_geometry "example" {
 			};
 		};
 
-		row { keys { <KEY>, <KEY>, { <KEY>, 12 }, <KEY> }; }; // more compact compact version of the row above.
-// Progress so far
+		row { keys { <KEY>, <KEY>, { <KEY>, 12 }, <KEY> }; }; // more compact row
 
 		// doodads (explained later) with minimum required variables
 		solid "solid" {
