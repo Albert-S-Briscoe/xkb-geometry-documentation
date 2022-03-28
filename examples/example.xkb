@@ -1,12 +1,10 @@
 // rough template at the moment, but it has almost everything
-// numbers are not the defaults at the moment
-
-// I'm using backticks to quote code in comments.
+// numbers are either defaults (0 if there isn't a default) or an example value (123 or 12).
 
 
 // Comments are c style single line comments. C multi line comments (/* comment */) will not work.
 // Measurements are in mm, with an accuracy of 0.1mm.
-// All variable names are case insensitive. `SeCtIoN "name" {};` is the same as `section "name" {};`.
+// Everything is case insensitive unless noted otherwise. Even strings, to some extent.
 
 xkb_geometry "example" {
 	// include statements `HandleIncludeGeometry`
@@ -14,7 +12,7 @@ xkb_geometry "example" {
 
 
 	// I get zero results searching the xkbcomp code for this. It's the name of the keyboard, but I have no idea how it gets to xkbprint.
-	description="";
+	description="aoeu";
 
 	// Required if using xkbprint. Recommended (possibly not required?) to be correct.
 	width=123; //widthmm=123;
@@ -25,9 +23,16 @@ xkb_geometry "example" {
 	fontslant=""; //slant="";
 	fontweight=""; //weight="";
 	fontwidth=""; //setwidth="";
+	// xkbcomp is missing fontvariant/variant?
 	fontencoding=""; //encoding="";
 	xfont=""; //xfontname="";
 	fontsize=12; // Can be 4-255
+
+	// Colors can be anything, but xkbprint accepts these constants:
+	// "white", "black", "red", "green", or "blue"
+	// or, (case sensitive and replacing "%d" with an integer from 0 to 100 ("red80" for example)):
+	// "grey%d", "gray%d", "Grey%d", "Gray%d", "red%d", "green%d", or "blue%d"
+	// xkbprint defaults to grey90, which is close to white.
 
 	// Colors (optional):
 	basecolor=""; //color="";
@@ -51,7 +56,7 @@ xkb_geometry "example" {
 	section.left=123;
 	section.width=123;
 	section.height=123;
-	section.angle=123;
+	section.angle=123; // explained later
 
 	//`property`?
 
@@ -105,12 +110,16 @@ xkb_geometry "example" {
 
 	// Physically and functionally grouped together set of keys. (not a requirement, but a good recommendation)
 	// XKB's documentation uses splitting a 104 key keyboard into 4 parts as an exapmle; Alphanumeric (for the 60% area of a keyboard), Function (for Esc-F12), Editing (for the nav cluster), and Keypad for the numpad.
-	section "" {
+	section "Example section 1" {
 		priority=0; //section.priority=0; // Rendering order, range is 0 to `XkbGeomMaxPriority`
 		top=0; //section.top=0;
 		left=0; //section.left=0;
 		width=0; //section.width=0;
 		height=0; //section.height=0;
+
+		// Angles are specified in 10s of degrees.
+		// rotation is clockwise around the element's origin
+		// 360° would be `angle=36;`.
 		angle=0; //section.angle=0;
 
 		row.top=123;
@@ -159,57 +168,128 @@ xkb_geometry "example" {
 			};
 		};
 
-		row { keys { <KEY>, <KEY>, { <KEY>, 12 }, <KEY> } }; // more compact compact version of the row above.
+		row { keys { <KEY>, <KEY>, { <KEY>, 12 }, <KEY> }; }; // more compact compact version of the row above.
 // Progress so far
-		//doodads `StmtDoodadDef` or `StmtIndicatorMapDef`: `HandleDoodadDef`
-		//overlays `StmtOverlayDef`: `HandleOverlayDef`
+
+		// doodads (explained later) with minimum required variables
+		solid "solid" {
+			top=0;
+			left=0;
+			shape="Basic Shape";
+		};
+		outline "outline" {
+			top=0;
+			left=0;
+			shape="Basic Shape";
+		};
+		text "text" {
+			top=0;
+			left=0;
+			text="text";
+		};
+		indicator "indicator" {
+			top=0;
+			left=0;
+			shape="Basic Shape";
+		};
+		logo "logo" {
+			top=0;
+			left=0;
+			name="logo";
+			shape="Basic Shape";
+		};
+
+		//overlays. Not documented yet. `StmtOverlayDef`: `HandleOverlayDef`
 
 	}; // end of section
 
 
 
-	solid "" {
-		priority?
-		top
-		left
-		angle?
-		color=""
-		shape=""
+
+	// Doodads:
+	// If any doodad's name is set to "edges" (not case sensitive), xkbprint will disable the background shape.
+	// all doodads support these variables:
+	// priority: Determines what order things are rendered in. 0 is on top, 255 is at the bottom.
+	// top: mm from the top of the keyboard
+	// left: mm from the left edge of the keyboard
+	// color: Determines the color to use. I don't know if it affects anything other than `solid`.
+
+	// Minimum required options for each doodad type are above.
+
+	// Solid and outline doodads both render a shape.
+	// The only difference is that outline doodads don't fill in the shape.
+	solid "Example solid doodad" {
+		priority=0;
+		top=0;
+		left=0;
+		color="";
+
+		corner=0; //cornerRadius=0;
+		angle=0;
+		shape="Basic Shape";
 	};
 
-	outline "" {
+	outline "Example outline doodad" {
 		// same as solid
+		priority=0;
+		top=0;
+		left=0;
+		color=""; // Unused?
+
+		corner=0; //cornerRadius=0;
+		angle=0;
+		shape="Basic Shape";
 	};
 
-	text "" {
-		priority?
-		top
-		left
-		angle?
-		width
-		height
-		color=""
-		text = ""
-		//font related stuff
+	// Text doodads allow you to show arbitrary text.
+	text "Example text doodad" {
+		priority=0;
+		top=0;
+		left=0;
+		color=""; // Unused?
+
+		angle=0;
+		width=0;
+		height=0;
+		text="Example text";
+
+		// font (optional)
+		font="";
+		fontslant=""; //slant="";
+		fontweight=""; //weight="";
+		fontwidth=""; //setwidth="";
+		fontvariant=""; //variant=""; // This isn't in the font variables above.
+		fontencoding=""; //encoding="";
+		//xfont=""; //xfontname="";
+		fontsize=12; // Might not need to be 4-255
+
+		// xkbcomp/geometry.c:1626?
 	};
 
-	indicator "" {
-		priority?
-		top
-		left
-		angle?
-		shape=""
-		on_color=""
-		off_color=""
+	// Shows indicator leds.
+	indicator "Example indicator doodad" {
+		priority=0;
+		top=0;
+		left=0;
+		color=""; // same as `oncolor`
+
+		shape="Basic Shape";
+		oncolor=""; // color to use when that indicator is on. Same as `color`
+		offcolor=""; // color to use when that indicator is off
 	};
 
-	logo "" {
-		priority?
-		top
-		left
-		angle?
-		color=""
-		shape=""
+	// Unused element for anything that isn't in the xkb protocol.
+	// xkbprint ignores this element. I am not aware of any program that uses it, but there might be one.
+	logo "Example logo doodad" {
+		priority=0;
+		top=0;
+		left=0;
+		color="";
+
+		corner=0; //cornerRadius=0;
+		angle=0;
+		shape="Basic Shape";
+		name=""; //logoname="";
 		//`logo_name`
 	};
 };
